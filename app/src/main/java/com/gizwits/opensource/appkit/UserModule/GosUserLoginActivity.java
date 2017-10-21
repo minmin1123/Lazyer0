@@ -73,24 +73,24 @@ public class GosUserLoginActivity extends GosUserModuleBaseActivity implements O
 
 	/** The tv Forget */
 	private TextView tvForget;
-
-	/** The tv Pass */
-	private TextView tvPass;
+//
+//	/** The tv Pass */
+//	private TextView tvPass;
 
 	/** The cb Laws */
 	private CheckBox cbLaws;
 
-	/** The ll QQ */
-	private LinearLayout llQQ;
+//	/** The ll QQ */
+//	private LinearLayout llQQ;
+//
+//	/** The ll Wechat */
+//	private LinearLayout llWechat;
 
-	/** The ll Wechat */
-	private LinearLayout llWechat;
-
-	/** The Tencent */
-	private Tencent mTencent;
-
-	/** The Wechat */
-	public static IWXAPI mIwxapi;
+//	/** The Tencent */
+//	private Tencent mTencent;
+//
+//	/** The Wechat */
+//	public static IWXAPI mIwxapi;
 
 	/** The Scope */
 	private String Scope = "get_user_info,add_t";
@@ -130,20 +130,22 @@ public class GosUserLoginActivity extends GosUserModuleBaseActivity implements O
 				progressDialog.show();
 				GosDeviceListActivity.loginStatus = 0;
 				GizWifiSDK.sharedInstance().userLogin(etName.getText().toString(), etPsw.getText().toString());
+
 				break;
 			// 自动登录
 			case AUTO_LOGIN:
 				progressDialog.show();
 				GosDeviceListActivity.loginStatus = 0;
 				GizWifiSDK.sharedInstance().userLogin(spf.getString("UserName", ""), spf.getString("PassWord", ""));
+
 				break;
 			// 第三方登录
-			case THRED_LOGIN:
-				progressDialog.show();
-				GosDeviceListActivity.loginStatus = 0;
-				GizWifiSDK.sharedInstance().loginWithThirdAccount(gizThirdAccountType, thirdUid, thirdToken);
-				spf.edit().putString("thirdUid", thirdUid).commit();
-				break;
+//			case THRED_LOGIN:
+//				progressDialog.show();
+//				GosDeviceListActivity.loginStatus = 0;
+//				GizWifiSDK.sharedInstance().loginWithThirdAccount(gizThirdAccountType, thirdUid, thirdToken);
+//				spf.edit().putString("thirdUid", thirdUid).commit();
+//				break;
 
 			}
 		};
@@ -188,6 +190,7 @@ public class GosUserLoginActivity extends GosUserModuleBaseActivity implements O
 		JPushInterface.onResume(this);
 		autoLogin();
 
+
 		cleanuserthing();
 	}
 
@@ -216,45 +219,45 @@ public class GosUserLoginActivity extends GosUserModuleBaseActivity implements O
 		btnLogin = (Button) findViewById(R.id.btnLogin);
 		tvRegister = (TextView) findViewById(R.id.tvRegister);
 		tvForget = (TextView) findViewById(R.id.tvForget);
-		tvPass = (TextView) findViewById(R.id.tvPass);
+//		tvPass = (TextView) findViewById(R.id.tvPass);
 		cbLaws = (CheckBox) findViewById(R.id.cbLaws);
 
-		DotView DotView = (DotView) findViewById(R.id.dotView1);
-		llQQ = (LinearLayout) findViewById(R.id.llQQ);
-		llWechat = (LinearLayout) findViewById(R.id.llWechat);
+//		DotView DotView = (DotView) findViewById(R.id.dotView1);
+//		llQQ = (LinearLayout) findViewById(R.id.llQQ);
+//		llWechat = (LinearLayout) findViewById(R.id.llWechat);
 		String setTencentAppID = GosDeploy.setTencentAppID();
 		String setWechatAppID = GosDeploy.setWechatAppID();
 		// 判断腾讯和微信是否需要隐藏和显示
-		setWechatOrTencentIsVisable(DotView);
+//		setWechatOrTencentIsVisable(DotView);
 		// 配置文件部署
 		btnLogin.setBackgroundDrawable(GosDeploy.setButtonBackgroundColor());
 		btnLogin.setTextColor(GosDeploy.setButtonTextColor());
 
 	}
-
-	protected void setWechatOrTencentIsVisable(DotView DotView) {
-		if (!GosDeploy.setWechat()) {
-
-			llWechat.setVisibility(View.GONE);
-		}
-		if (!GosDeploy.setQQ()) {
-
-			llQQ.setVisibility(View.GONE);
-		}
-
-		if (!GosDeploy.setWechat() && !GosDeploy.setQQ()) {
-			DotView.setVisibility(View.GONE);
-		}
-	}
+//
+//	protected void setWechatOrTencentIsVisable(DotView DotView) {
+//		if (!GosDeploy.setWechat()) {
+//
+//			llWechat.setVisibility(View.GONE);
+//		}
+//		if (!GosDeploy.setQQ()) {
+//
+//			llQQ.setVisibility(View.GONE);
+//		}
+//
+//		if (!GosDeploy.setWechat() && !GosDeploy.setQQ()) {
+//			DotView.setVisibility(View.GONE);
+//		}
+//	}
 
 	private void initEvent() {
 		btnLogin.setOnClickListener(this);
 		tvRegister.setOnClickListener(this);
 		tvForget.setOnClickListener(this);
-		tvPass.setOnClickListener(this);
+//		tvPass.setOnClickListener(this);
 
-		llQQ.setOnClickListener(this);
-		llWechat.setOnClickListener(this);
+//		llQQ.setOnClickListener(this);
+//		llWechat.setOnClickListener(this);
 
 		cbLaws.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
@@ -297,75 +300,75 @@ public class GosUserLoginActivity extends GosUserModuleBaseActivity implements O
 			intent = new Intent(GosUserLoginActivity.this, GosForgetPasswordActivity.class);
 			startActivity(intent);
 			break;
-		case R.id.tvPass:
+//		case R.id.tvPass:
+//
+//			intent = new Intent(GosUserLoginActivity.this, GosMainActivity.class);
+//			startActivity(intent);
+//
+//			logoutToClean();
+//			break;
 
-			intent = new Intent(GosUserLoginActivity.this, GosMainActivity.class);
-			startActivity(intent);
-
-			logoutToClean();
-			break;
-
-		case R.id.llQQ:
-			String tencentAPPID = GosDeploy.setTencentAppID();
-			if (TextUtils.isEmpty(tencentAPPID) || tencentAPPID.contains("your_tencent_app_id")) {
-				noIDAlert(this, R.string.TencentAPPID_Toast);
-				return;
-			} else {
-				// 启动QQ登录SDK
-				mTencent = Tencent.createInstance(GosDeploy.setTencentAppID(), this.getApplicationContext());
-			}
-
-			listener = new BaseUiListener() {
-				protected void doComplete(JSONObject values) {
-					Message msg = new Message();
-					try {
-						if (values.getInt("ret") == 0) {
-							gizThirdAccountType = GizThirdAccountType.GizThirdQQ;
-							thirdUid = values.getString("openid").toString();
-							thirdToken = values.getString("access_token").toString();
-							msg.what = handler_key.THRED_LOGIN.ordinal();
-							baseHandler.sendMessage(msg);
-						} else {
-
-							Toast.makeText(GosUserLoginActivity.this, msg.obj.toString(), toastTime).show();
-
-						}
-					} catch (JSONException e) {
-						e.printStackTrace();
-					}
-				}
-			};
-			mTencent.login(this, Scope, listener);
-			break;
-		case R.id.llWechat:
-			String wechatAppID = GosDeploy.setWechatAppID();
-			String wechatAppSecret = GosDeploy.setWechatAppSecret();
-			if (TextUtils.isEmpty(wechatAppID) || TextUtils.isEmpty(wechatAppSecret)
-					|| wechatAppID.contains("your_wechat_app_id")
-					|| wechatAppSecret.contains("your_wechat_app_secret")) {
-				noIDAlert(this, R.string.WechatAppID_Toast);
-				return;
-			} else {
-
-				// 设置与WXEntryActivity共用Handler
-				setBaseHandler(baseHandler);
-
-				// 启动微信登录SDK
-				mIwxapi = WXAPIFactory.createWXAPI(this, wechatAppID, true);
-
-				// 将应用的AppID注册到微信
-				mIwxapi.registerApp(wechatAppID);
-			}
-
-			if (!(mIwxapi.isWXAppInstalled() && mIwxapi.isWXAppSupportAPI())) {
-				noIDAlert(this, R.string.No_WXApp);
-				return;
-			}
-			SendAuth.Req req = new SendAuth.Req();
-			req.scope = "snsapi_userinfo";
-			req.state = "wechat_sdk_demo_test";
-			mIwxapi.sendReq(req);
-			break;
+//		case R.id.llQQ:
+//			String tencentAPPID = GosDeploy.setTencentAppID();
+//			if (TextUtils.isEmpty(tencentAPPID) || tencentAPPID.contains("your_tencent_app_id")) {
+//				noIDAlert(this, R.string.TencentAPPID_Toast);
+//				return;
+//			} else {
+//				// 启动QQ登录SDK
+//				mTencent = Tencent.createInstance(GosDeploy.setTencentAppID(), this.getApplicationContext());
+//			}
+//
+//			listener = new BaseUiListener() {
+//				protected void doComplete(JSONObject values) {
+//					Message msg = new Message();
+//					try {
+//						if (values.getInt("ret") == 0) {
+//							gizThirdAccountType = GizThirdAccountType.GizThirdQQ;
+//							thirdUid = values.getString("openid").toString();
+//							thirdToken = values.getString("access_token").toString();
+//							msg.what = handler_key.THRED_LOGIN.ordinal();
+//							baseHandler.sendMessage(msg);
+//						} else {
+//
+//							Toast.makeText(GosUserLoginActivity.this, msg.obj.toString(), toastTime).show();
+//
+//						}
+//					} catch (JSONException e) {
+//						e.printStackTrace();
+//					}
+//				}
+//			};
+//			mTencent.login(this, Scope, listener);
+//			break;
+//		case R.id.llWechat:
+//			String wechatAppID = GosDeploy.setWechatAppID();
+//			String wechatAppSecret = GosDeploy.setWechatAppSecret();
+//			if (TextUtils.isEmpty(wechatAppID) || TextUtils.isEmpty(wechatAppSecret)
+//					|| wechatAppID.contains("your_wechat_app_id")
+//					|| wechatAppSecret.contains("your_wechat_app_secret")) {
+//				noIDAlert(this, R.string.WechatAppID_Toast);
+//				return;
+//			} else {
+//
+//				// 设置与WXEntryActivity共用Handler
+//				setBaseHandler(baseHandler);
+//
+//				// 启动微信登录SDK
+//				mIwxapi = WXAPIFactory.createWXAPI(this, wechatAppID, true);
+//
+//				// 将应用的AppID注册到微信
+//				mIwxapi.registerApp(wechatAppID);
+//			}
+//
+//			if (!(mIwxapi.isWXAppInstalled() && mIwxapi.isWXAppSupportAPI())) {
+//				noIDAlert(this, R.string.No_WXApp);
+//				return;
+//			}
+//			SendAuth.Req req = new SendAuth.Req();
+//			req.scope = "snsapi_userinfo";
+//			req.state = "wechat_sdk_demo_test";
+//			mIwxapi.sendReq(req);
+//			break;
 
 		}
 	}

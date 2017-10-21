@@ -53,7 +53,7 @@ public class GosMainActivity extends GosDeviceModuleBaseActivity {
 	LocalActivityManager manager = null;
 	NoScrollViewPager pager = null;
 	TabHost tabHost = null;
-	LinearLayout t1, t2, t3;
+	LinearLayout t1,  t3;
 
 	String softssid, uid, token;
 
@@ -76,10 +76,10 @@ public class GosMainActivity extends GosDeviceModuleBaseActivity {
 
 	public static Activity instance = null;
 	private ImageView img1;
-	private ImageView img2;
+//	private ImageView img2;
 	private ImageView img3;
 	private TextView tx1;
-	private TextView tx2;
+//	private TextView tx2;
 	private TextView tx3;
 	private static final  int REQUEST_CODE_SETTING = 100;
 
@@ -153,19 +153,19 @@ public class GosMainActivity extends GosDeviceModuleBaseActivity {
 	 */
 	private void initTextView() {
 		t1 = (LinearLayout) findViewById(R.id.text1);
-		t2 = (LinearLayout) findViewById(R.id.text2);
+//		t2 = (LinearLayout) findViewById(R.id.text2);
 		t3 = (LinearLayout) findViewById(R.id.text3);
 
 		img1 = (ImageView) findViewById(R.id.img1);
-		img2 = (ImageView) findViewById(R.id.img2);
+//		img2 = (ImageView) findViewById(R.id.img2);
 		img3 = (ImageView) findViewById(R.id.img3);
 
 		tx1 = (TextView) findViewById(R.id.tx1);
-		tx2 = (TextView) findViewById(R.id.tx2);
+//		tx2 = (TextView) findViewById(R.id.tx2);
 		tx3 = (TextView) findViewById(R.id.tx3);
 
 		t1.setOnClickListener(new MyOnClickListener(0));
-		t2.setOnClickListener(new MyOnClickListener(1));
+//		t2.setOnClickListener(new MyOnClickListener(1));
 		t3.setOnClickListener(new MyOnClickListener(2));
 
 	}
@@ -193,11 +193,11 @@ public class GosMainActivity extends GosDeviceModuleBaseActivity {
 		// t3.setBackgroundColor(getResources().getColor(R.color.white));
 
 		img1.setBackgroundResource(R.drawable.grid);
-		img2.setBackgroundResource(R.drawable.message_grey);
+//		img2.setBackgroundResource(R.drawable.message_grey);
 		img3.setBackgroundResource(R.drawable.user_grey);
 
 		tx1.setTextColor(getResources().getColor(R.color.black));
-		tx2.setTextColor(getResources().getColor(R.color.gray));
+//		tx2.setTextColor(getResources().getColor(R.color.gray));
 		tx3.setTextColor(getResources().getColor(R.color.gray));
 		setActionBar(false, false, R.string.devicelist_title);
 		
@@ -376,17 +376,17 @@ public class GosMainActivity extends GosDeviceModuleBaseActivity {
 				setActionBar(false, false, R.string.devicelist_title);
 				activity.onResume();
 				break;
-			case 1:
-
-				if (currIndex == 0) {
-					animation = new TranslateAnimation(offset, one, 0, 0);
-				} else if (currIndex == 2) {
-					animation = new TranslateAnimation(two, one, 0, 0);
-				}
-				setActionBar(false, false, R.string.messagecenter);
-				activity.onPause();
-				center.onResume();
-				break;
+//			case 1:
+//
+//				if (currIndex == 0) {
+//					animation = new TranslateAnimation(offset, one, 0, 0);
+//				} else if (currIndex == 2) {
+//					animation = new TranslateAnimation(two, one, 0, 0);
+//				}
+//				setActionBar(false, false, R.string.messagecenter);
+//				activity.onPause();
+//				center.onResume();
+//				break;
 
 			case 2:
 				activity.onPause();
@@ -437,11 +437,11 @@ public class GosMainActivity extends GosDeviceModuleBaseActivity {
 				// t3.setBackgroundColor(getResources().getColor(R.color.white));
 
 				img1.setBackgroundResource(R.drawable.grid);
-				img2.setBackgroundResource(R.drawable.message_grey);
+//				img2.setBackgroundResource(R.drawable.message_grey);
 				img3.setBackgroundResource(R.drawable.user_grey);
 
 				tx1.setTextColor(getResources().getColor(R.color.black));
-				tx2.setTextColor(getResources().getColor(R.color.gray));
+//				tx2.setTextColor(getResources().getColor(R.color.gray));
 				tx3.setTextColor(getResources().getColor(R.color.gray));
 				break;
 
@@ -451,11 +451,11 @@ public class GosMainActivity extends GosDeviceModuleBaseActivity {
 				// t3.setBackgroundColor(getResources().getColor(R.color.white));
 
 				img1.setBackgroundResource(R.drawable.grid_grey);
-				img2.setBackgroundResource(R.drawable.message);
+//				img2.setBackgroundResource(R.drawable.message);
 				img3.setBackgroundResource(R.drawable.user_grey);
 
 				tx1.setTextColor(getResources().getColor(R.color.gray));
-				tx2.setTextColor(getResources().getColor(R.color.black));
+//				tx2.setTextColor(getResources().getColor(R.color.black));
 				tx3.setTextColor(getResources().getColor(R.color.gray));
 				break;
 
@@ -465,11 +465,11 @@ public class GosMainActivity extends GosDeviceModuleBaseActivity {
 				// t3.setBackgroundColor(getResources().getColor(R.color.gray));
 
 				img1.setBackgroundResource(R.drawable.grid_grey);
-				img2.setBackgroundResource(R.drawable.message_grey);
+//				img2.setBackgroundResource(R.drawable.message_grey);
 				img3.setBackgroundResource(R.drawable.user);
 
 				tx1.setTextColor(getResources().getColor(R.color.gray));
-				tx2.setTextColor(getResources().getColor(R.color.gray));
+//				tx2.setTextColor(getResources().getColor(R.color.gray));
 				tx3.setTextColor(getResources().getColor(R.color.black));
 				break;
 
@@ -533,13 +533,13 @@ public class GosMainActivity extends GosDeviceModuleBaseActivity {
 	/**
 	 * 菜单、返回键响应
 	 */
-	@Override
-	public boolean onKeyDown(int keyCode, KeyEvent event) {
-		if (keyCode == KeyEvent.KEYCODE_BACK) {
-			exitBy2Click();
-		}
-		return false;
-	}
+//	@Override
+//	public boolean onKeyDown(int keyCode, KeyEvent event) {
+//		if (keyCode == KeyEvent.KEYCODE_BACK) {
+////			exitBy2Click();
+//		}
+//		return false;
+//	}
 
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
