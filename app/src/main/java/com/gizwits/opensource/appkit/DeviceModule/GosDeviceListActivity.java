@@ -131,10 +131,6 @@ public class GosDeviceListActivity extends GosDeviceModuleBaseActivity implement
 
 	boolean isFrist = true;
 
-	// boolean isLogout = false;
-	//
-	// public static boolean isAnonymousLoging = false;
-
 	/**
 	 * 判断用户登录状态 0：未登录 1：实名用户登录 2：匿名用户登录 3：匿名用户登录中 4：匿名用户登录中断
 	 */
@@ -607,90 +603,90 @@ public class GosDeviceListActivity extends GosDeviceModuleBaseActivity implement
 			Toast.makeText(this, R.string.add_successful, 2000).show();
 		}
 	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-
-		if (!TextUtils.isEmpty(spf.getString("UserName", "")) && !TextUtils.isEmpty(spf.getString("PassWord", ""))) {
-			getMenuInflater().inflate(R.menu.devicelist_logout, menu);
-		} else {
-			if (getIntent().getBooleanExtra("ThredLogin", false)) {
-				getMenuInflater().inflate(R.menu.devicelist_logout, menu);
-			} else {
-				getMenuInflater().inflate(R.menu.devicelist_login, menu);
-			}
-		}
-
-		return true;
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		super.onOptionsItemSelected(item);
-		switch (item.getItemId()) {
-		case android.R.id.home:
-			if (checkNetwork(GosDeviceListActivity.this)) {
-				progressDialog.show();
-				handler.sendEmptyMessage(GETLIST);
-			}
-			break;
-		case R.id.action_QR_code:
-
-			intent = new Intent(GosDeviceListActivity.this, CaptureActivity.class);
-			startActivity(intent);
-			break;
-		case R.id.action_change_user:
-			if (item.getTitle() == getText(R.string.login)) {
-				logoutToClean();
-				break;
-			}
-			final Dialog dialog = new AlertDialog.Builder(this).setView(new EditText(this)).create();
-			dialog.show();
-
-			Window window = dialog.getWindow();
-			window.setContentView(R.layout.alert_gos_logout);
-
-			LinearLayout llNo, llSure;
-			llNo = (LinearLayout) window.findViewById(R.id.llNo);
-			llSure = (LinearLayout) window.findViewById(R.id.llSure);
-
-			llNo.setOnClickListener(new OnClickListener() {
-
-				@Override
-				public void onClick(View v) {
-					dialog.cancel();
-				}
-			});
-
-			llSure.setOnClickListener(new OnClickListener() {
-
-				@Override
-				public void onClick(View v) {
-					logoutToClean();
-				}
-			});
-
-			break;
-		case R.id.action_addDevice:
-			if (!checkNetwork(GosDeviceListActivity.this)) {
-				Toast.makeText(GosDeviceListActivity.this, R.string.network_error, 2000).show();
-			} else {
-				intent = new Intent(GosDeviceListActivity.this, GosAirlinkChooseDeviceWorkWiFiActivity.class);
-				/*
-				 * intent = new Intent(GosDeviceListActivity.this,
-				 * GosChooseDeviceActivity.class);
-				 */
-				startActivity(intent);
-			}
-			break;
-		case R.id.action_site:
-			intent = new Intent(GosDeviceListActivity.this, GosSettiingsActivity.class);
-			startActivityForResult(intent, 600);
-			break;
-		}
-		return super.onOptionsItemSelected(item);
-	}
+//不创建menue
+//	@Override
+//	public boolean onCreateOptionsMenu(Menu menu) {
+//		// Inflate the menu; this adds items to the action bar if it is present.
+//
+//		if (!TextUtils.isEmpty(spf.getString("UserName", "")) && !TextUtils.isEmpty(spf.getString("PassWord", ""))) {
+//			getMenuInflater().inflate(R.menu.devicelist_logout, menu);
+//		} else {
+//			if (getIntent().getBooleanExtra("ThredLogin", false)) {
+//				getMenuInflater().inflate(R.menu.devicelist_logout, menu);
+//			} else {
+//				getMenuInflater().inflate(R.menu.devicelist_login, menu);
+//			}
+//		}
+//
+//		return true;
+//	}
+//不需要menue点击事件方法
+//	@Override
+//	public boolean onOptionsItemSelected(MenuItem item) {
+//		super.onOptionsItemSelected(item);
+//		switch (item.getItemId()) {
+//		case android.R.id.home:
+//			if (checkNetwork(GosDeviceListActivity.this)) {
+//				progressDialog.show();
+//				handler.sendEmptyMessage(GETLIST);
+//			}
+//			break;
+//		case R.id.action_QR_code:
+//
+//			intent = new Intent(GosDeviceListActivity.this, CaptureActivity.class);
+//			startActivity(intent);
+//			break;
+//		case R.id.action_change_user:
+//			if (item.getTitle() == getText(R.string.login)) {
+//				logoutToClean();
+//				break;
+//			}
+//			final Dialog dialog = new AlertDialog.Builder(this).setView(new EditText(this)).create();
+//			dialog.show();
+//
+//			Window window = dialog.getWindow();
+//			window.setContentView(R.layout.alert_gos_logout);
+//
+//			LinearLayout llNo, llSure;
+//			llNo = (LinearLayout) window.findViewById(R.id.llNo);
+//			llSure = (LinearLayout) window.findViewById(R.id.llSure);
+//
+//			llNo.setOnClickListener(new OnClickListener() {
+//
+//				@Override
+//				public void onClick(View v) {
+//					dialog.cancel();
+//				}
+//			});
+//
+//			llSure.setOnClickListener(new OnClickListener() {
+//
+//				@Override
+//				public void onClick(View v) {
+//					logoutToClean();
+//				}
+//			});
+//
+//			break;
+//		case R.id.action_addDevice:
+//			if (!checkNetwork(GosDeviceListActivity.this)) {
+//				Toast.makeText(GosDeviceListActivity.this, R.string.network_error, 2000).show();
+//			} else {
+//				intent = new Intent(GosDeviceListActivity.this, GosAirlinkChooseDeviceWorkWiFiActivity.class);
+//				/*
+//				 * intent = new Intent(GosDeviceListActivity.this,
+//				 * GosChooseDeviceActivity.class);
+//				 */
+//				startActivity(intent);
+//			}
+//			break;
+//		case R.id.action_site:
+//			intent = new Intent(GosDeviceListActivity.this, GosSettiingsActivity.class);
+//			startActivityForResult(intent, 600);
+//			break;
+//		}
+//		return super.onOptionsItemSelected(item);
+//	}
 
 	private void UpdateUI() {
 		if (GosDeviceModuleBaseActivity.deviceslist.isEmpty()) {

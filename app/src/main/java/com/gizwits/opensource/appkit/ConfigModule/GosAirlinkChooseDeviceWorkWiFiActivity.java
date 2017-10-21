@@ -299,11 +299,19 @@ public class GosAirlinkChooseDeviceWorkWiFiActivity extends GosConfigModuleBaseA
 		
 		int setModuleSelectOn = GosDeploy.setModuleSelectOn();
 
+//		if (setModuleSelectOn == 0) {
+//			Intent intent = new Intent(this, GosModeListActivity.class);
+//			startActivity(intent);
+//		} else {
+//			Intent intent = new Intent(this, GosAirlinkReadyActivity.class);
+//			startActivity(intent);
+//		}
+		//直接跳转到按钮寻找界面
 		if (setModuleSelectOn == 0) {
-			Intent intent = new Intent(this, GosModeListActivity.class);
+			Intent intent = new Intent(this, GosAirlinkConfigCountdownActivity.class);
 			startActivity(intent);
 		} else {
-			Intent intent = new Intent(this, GosAirlinkReadyActivity.class);
+			Intent intent = new Intent(this, GosAirlinkConfigCountdownActivity.class);
 			startActivity(intent);
 		}
 
@@ -415,7 +423,8 @@ public class GosAirlinkChooseDeviceWorkWiFiActivity extends GosConfigModuleBaseA
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 
-		getMenuInflater().inflate(R.menu.choosesoftap, menu);
+		//getMenuInflater().inflate(R.menu.choosesoftap, menu);
+		//不需要手动配置
 
 		return true;
 	}

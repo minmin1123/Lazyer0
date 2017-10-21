@@ -30,6 +30,7 @@ import android.widget.Toast;
 
 @SuppressLint("HandlerLeak")
 public class GosConfigCountdownActivity extends GosConfigModuleBaseActivity {
+	//寻找设备等待界面
 
 	private GosWifiChangeReciver broadcase;
 

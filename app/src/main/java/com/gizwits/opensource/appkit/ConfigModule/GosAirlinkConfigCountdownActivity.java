@@ -140,7 +140,6 @@ public class GosAirlinkConfigCountdownActivity extends
 			handler_key key = handler_key.values()[msg.what];
 			switch (key) {
 			case TIMER_TEXT:
-
 				tvTimer.setText(timerText);
 				break;
 

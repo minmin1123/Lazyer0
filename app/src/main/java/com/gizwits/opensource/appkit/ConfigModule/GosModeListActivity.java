@@ -32,6 +32,7 @@ public class GosModeListActivity extends GosConfigModuleBaseActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		//被跳过的选择页面
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_gos_modelist);
 		// 设置ActionBar

@@ -37,6 +37,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+//WIFI登录密码界面
 public class GosChooseDeviceWorkWiFiActivity extends GosConfigModuleBaseActivity
 		implements OnClickListener, OnItemClickListener {
 
