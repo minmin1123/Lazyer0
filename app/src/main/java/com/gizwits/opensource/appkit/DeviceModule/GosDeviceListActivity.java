@@ -506,7 +506,6 @@ public class GosDeviceListActivity extends GosDeviceModuleBaseActivity implement
 			GosDeviceModuleBaseActivity.deviceslist.add(gizWifiDevice);
 		}
 		handler.sendEmptyMessage(UPDATALIST);
-
 	}
 
 	protected void didUserLogin(GizWifiErrorCode result, java.lang.String uid, java.lang.String token) {
