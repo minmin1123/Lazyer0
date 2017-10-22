@@ -22,12 +22,23 @@
 				android:layout_marginBottom="1dp"
 				android:background="@color/white"
 				android:padding="10dp" >
+
+			 <ImageView
+				 android:id="@+id/lightOne"
+				 android:layout_marginLeft="10dp"
+				 android:layout_width="wrap_content"
+				 android:layout_height="wrap_content"
+				 android:background="@drawable/lightoff"
+				 />
 		 
 				<TextView
 					android:layout_width="wrap_content"
 					android:layout_height="match_parent"
 					android:layout_centerVertical="true"
-					android:text="led" />
+					android:text="灯1"
+					android:layout_toRightOf="@id/lightOne"
+					android:layout_marginLeft="45dp"
+					android:textSize="20sp"/>
 
 				<Switch
 					android:id="@+id/sw_bool_led"
@@ -35,8 +46,9 @@
 					android:layout_height="match_parent"
 					android:layout_alignParentRight="true"
 					android:layout_centerVertical="true"
-					android:textOff="关闭"
-					android:textOn="开启" />
+					android:textOff="关灯"
+					android:textOn="开灯"
+					android:layout_marginRight="10dp"/>
 					
 		</RelativeLayout>	
 	
@@ -48,12 +60,23 @@
 				android:layout_marginBottom="1dp"
 				android:background="@color/white"
 				android:padding="10dp" >
-		 
-				<TextView
-					android:layout_width="wrap_content"
-					android:layout_height="match_parent"
-					android:layout_centerVertical="true"
-					android:text="lock" />
+
+			 <ImageView
+				 android:id="@+id/lightTwo"
+				 android:layout_marginLeft="10dp"
+				 android:layout_width="wrap_content"
+				 android:layout_height="wrap_content"
+				 android:background="@drawable/lightoff"
+				 />
+
+			 <TextView
+				 android:layout_width="wrap_content"
+				 android:layout_height="match_parent"
+				 android:layout_centerVertical="true"
+				 android:text="灯2"
+				 android:layout_toRightOf="@id/lightTwo"
+				 android:layout_marginLeft="45dp"
+				 android:textSize="20sp"/>
 
 
                 <ImageView
@@ -66,13 +89,12 @@
 					android:layout_height="match_parent"
 					android:layout_alignParentRight="true"
 					android:layout_centerVertical="true"
-					android:textOff="关闭"
-					android:textOn="开启" />
+					android:textOff="关灯"
+					android:textOn="开灯"
+					android:layout_marginRight="10dp"/>
 					
 		</RelativeLayout>
 
-	
-	
     </LinearLayout>
 
 </ScrollView>

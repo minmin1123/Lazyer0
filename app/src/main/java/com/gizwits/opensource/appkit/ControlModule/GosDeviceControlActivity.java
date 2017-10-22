@@ -14,28 +14,24 @@ import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
 import android.view.View.OnClickListener;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemSelectedListener;
+import android.view.Window;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
-import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
 import android.widget.Toast;
 
-import java.util.concurrent.ConcurrentHashMap;
-
 import com.gizwits.gizwifisdk.api.GizWifiDevice;
 import com.gizwits.gizwifisdk.enumration.GizWifiDeviceNetStatus;
 import com.gizwits.gizwifisdk.enumration.GizWifiErrorCode;
 import com.gizwits.opensource.appkit.R;
-import com.gizwits.opensource.appkit.utils.HexStrUtils;
-import com.gizwits.opensource.appkit.view.HexWatcher;
+
+import java.util.concurrent.ConcurrentHashMap;
 
 public class GosDeviceControlActivity extends GosControlModuleBaseActivity
 		implements OnClickListener, OnEditorActionListener, OnSeekBarChangeListener {
@@ -45,6 +41,9 @@ public class GosDeviceControlActivity extends GosControlModuleBaseActivity
 
 	private Switch sw_bool_led;
 	private Switch sw_bool_lock;
+
+	private ImageView lightOne;
+	private ImageView lightTwo;
 
 	private enum handler_key {
 
@@ -95,6 +94,8 @@ public class GosDeviceControlActivity extends GosControlModuleBaseActivity
 		
 		sw_bool_led = (Switch) findViewById(R.id.sw_bool_led);
 		sw_bool_lock = (Switch) findViewById(R.id.sw_bool_lock);
+		lightOne = (ImageView) findViewById(R.id.lightOne);
+		lightTwo = (ImageView) findViewById(R.id.lightTwo);
 	}
 
 	private void initEvent() {
@@ -138,9 +139,19 @@ public class GosDeviceControlActivity extends GosControlModuleBaseActivity
 		switch (v.getId()) {
 		case R.id.sw_bool_led:
 			sendCommand(KEY_LED, sw_bool_led.isChecked());
+			if(sw_bool_led.isChecked()){
+				lightOne.setBackgroundResource(R.drawable.lighton);
+			}else{
+				lightOne.setBackgroundResource(R.drawable.lightoff);
+			}
 			break;
 		case R.id.sw_bool_lock:
 			sendCommand(KEY_LOCK, sw_bool_lock.isChecked());
+			if(sw_bool_lock.isChecked()){
+				lightTwo.setBackgroundResource(R.drawable.lighton);
+			}else{
+				lightTwo.setBackgroundResource(R.drawable.lightoff);
+			}
 			break;
 		default:
 			break;
