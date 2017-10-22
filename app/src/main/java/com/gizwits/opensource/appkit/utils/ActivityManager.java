@@ -23,7 +23,7 @@ public class ActivityManager {
         activityList.remove(activity);
     }
 
-    public static void finishaAll() {
+    public static void finishAll() {
         for (Activity activity : activityList) {
             if (!activity.isFinishing()) {
                 activity.finish();

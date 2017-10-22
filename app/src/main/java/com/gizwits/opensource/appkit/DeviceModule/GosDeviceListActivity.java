@@ -21,6 +21,7 @@ import com.gizwits.opensource.appkit.PushModule.GosPushManager;
 import com.gizwits.opensource.appkit.SettingsModule.GosSettiingsActivity;
 import com.gizwits.opensource.appkit.UserModule.GosUserLoginActivity;
 import com.gizwits.opensource.appkit.sharingdevice.gosZxingDeviceSharingActivity;
+import com.gizwits.opensource.appkit.utils.ActivityManager;
 import com.gizwits.opensource.appkit.utils.NetUtils;
 import com.gizwits.opensource.appkit.view.SlideListView2;
 import com.gizwits.opensource.appkit.view.VerticalSwipeRefreshLayout;
@@ -310,6 +311,8 @@ public class GosDeviceListActivity extends GosDeviceModuleBaseActivity implement
 		initData();
 		initView();
 		initEvent();
+
+		ActivityManager.addActivity(GosDeviceListActivity.this);
 
 	}
 
@@ -810,17 +813,17 @@ public class GosDeviceListActivity extends GosDeviceModuleBaseActivity implement
 		Timer tExit = null;
 		if (isExit == false) {
 			isExit = true; // 准备退出；
-			String doubleClick;
-			if (!TextUtils.isEmpty(spf.getString("UserName", ""))
-					&& !TextUtils.isEmpty(spf.getString("PassWord", ""))) {
-				doubleClick = (String) getText(R.string.doubleclick_logout);
-			} else {
-				if (getIntent().getBooleanExtra("ThredLogin", false)) {
-					doubleClick = (String) getText(R.string.doubleclick_logout);
-				} else {
-					doubleClick = (String) getText(R.string.doubleclick_back);
-				}
-			}
+			String doubleClick=new String("再次点击退出应用");
+//			if (!TextUtils.isEmpty(spf.getString("UserName", ""))
+//					&& !TextUtils.isEmpty(spf.getString("PassWord", ""))) {
+//				doubleClick = (String) getText(R.string.doubleclick_logout);
+//			} else {
+//				if (getIntent().getBooleanExtra("ThredLogin", false)) {
+//					doubleClick = (String) getText(R.string.doubleclick_logout);
+//				} else {
+//					doubleClick = (String) getText(R.string.doubleclick_back);
+//				}
+//			}
 
 			Toast.makeText(this, doubleClick, 2000).show();
 			tExit = new Timer();
@@ -832,8 +835,10 @@ public class GosDeviceListActivity extends GosDeviceModuleBaseActivity implement
 			}, 2000); // 如果2秒钟内没有按下返回键，则启动定时器取消掉刚才执行的任务
 
 		} else {
-			logoutToClean();
+//			logoutToClean();
+			ActivityManager.finishAll();
 		}
+
 	}
 
 	/** 注销函数 */

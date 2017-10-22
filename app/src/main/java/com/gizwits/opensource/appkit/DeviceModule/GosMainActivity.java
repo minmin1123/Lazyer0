@@ -592,7 +592,7 @@ public class GosMainActivity extends GosDeviceModuleBaseActivity {
 
 		} else {
 //			logoutToClean();
-            ActivityManager.finishaAll();
+            ActivityManager.finishAll();
 		}
 	}
 
