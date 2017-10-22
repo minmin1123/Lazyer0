@@ -13,6 +13,7 @@ import com.gizwits.opensource.appkit.ConfigModule.GosAirlinkChooseDeviceWorkWiFi
 import com.gizwits.opensource.appkit.PushModule.GosPushManager;
 import com.gizwits.opensource.appkit.SettingsModule.GosSettiingsActivity;
 import com.gizwits.opensource.appkit.sharingdevice.messageCenterActivity;
+import com.gizwits.opensource.appkit.utils.ActivityManager;
 import com.yanzhenjie.permission.AndPermission;
 import com.yanzhenjie.permission.Rationale;
 import com.yanzhenjie.permission.RationaleListener;
@@ -111,7 +112,8 @@ public class GosMainActivity extends GosDeviceModuleBaseActivity {
 			}
 		})
 				.send();
-	
+
+		ActivityManager.addActivity(this);
 
 	}
 
@@ -203,6 +205,11 @@ public class GosMainActivity extends GosDeviceModuleBaseActivity {
 		
 		
 		pager.setOnPageChangeListener(new MyOnPageChangeListener());
+	}
+
+	@Override
+	public void onBackPressed() {
+        exitBy2Click();
 	}
 
 	/**
@@ -563,17 +570,17 @@ public class GosMainActivity extends GosDeviceModuleBaseActivity {
 		if (isExit == false) {
 			isExit = true; // 准备退出；
 			String doubleClick;
-			if (!TextUtils.isEmpty(spf.getString("UserName", ""))
-					&& !TextUtils.isEmpty(spf.getString("PassWord", ""))) {
-				doubleClick = (String) getText(R.string.doubleclick_logout);
-			} else {
-				if (getIntent().getBooleanExtra("ThredLogin", false)) {
-					doubleClick = (String) getText(R.string.doubleclick_logout);
-				} else {
-					doubleClick = (String) getText(R.string.doubleclick_back);
-				}
-			}
-
+//			if (!TextUtils.isEmpty(spf.getString("UserName", ""))
+//					&& !TextUtils.isEmpty(spf.getString("PassWord", ""))) {
+//				doubleClick = (String) getText(R.string.doubleclick_logout);
+//			} else {
+//				if (getIntent().getBooleanExtra("ThredLogin", false)) {
+//					doubleClick = (String) getText(R.string.doubleclick_logout);
+//				} else {
+//					doubleClick = (String) getText(R.string.doubleclick_back);
+//				}
+//			}
+            doubleClick=new String("再次点击退出程序");
 			Toast.makeText(this, doubleClick, 2000).show();
 			tExit = new Timer();
 			tExit.schedule(new TimerTask() {
@@ -584,7 +591,8 @@ public class GosMainActivity extends GosDeviceModuleBaseActivity {
 			}, 2000); // 如果2秒钟内没有按下返回键，则启动定时器取消掉刚才执行的任务
 
 		} else {
-			logoutToClean();
+//			logoutToClean();
+            ActivityManager.finishaAll();
 		}
 	}
 

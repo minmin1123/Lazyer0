@@ -4,6 +4,7 @@ import com.gizwits.opensource.appkit.R;
 import com.gizwits.opensource.appkit.CommonModule.GosBaseActivity;
 import com.gizwits.opensource.appkit.UserModule.GosUserManager;
 import com.gizwits.opensource.appkit.sharingdevice.SharedDeviceListAcitivity;
+import com.gizwits.opensource.appkit.utils.ActivityManager;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,7 +19,7 @@ public class GosSettiingsActivity extends GosBaseActivity implements OnClickList
 
 	private static final int SETTINGS = 123;
 	/** The ll About */
-	private LinearLayout llAbout;
+//	private LinearLayout llAbout;
 
 	/** The Intent */
 	Intent intent;
@@ -28,7 +29,7 @@ public class GosSettiingsActivity extends GosBaseActivity implements OnClickList
 	private LinearLayout lllogin;
 
 	private TextView phoneusername;
-	private LinearLayout deviceshared;
+//	private LinearLayout deviceshared;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -40,16 +41,17 @@ public class GosSettiingsActivity extends GosBaseActivity implements OnClickList
 
 		initView();
 		initEvent();
+
 	}
 
 	private void initView() {
-		llAbout = (LinearLayout) findViewById(R.id.llAbout);
+//		llAbout = (LinearLayout) findViewById(R.id.llAbout);
 
 		usermanager = (LinearLayout) findViewById(R.id.usermanager);
 
 		lllogin = (LinearLayout) findViewById(R.id.lllogin);
 
-		deviceshared = (LinearLayout) findViewById(R.id.deviceshared);
+//		deviceshared = (LinearLayout) findViewById(R.id.deviceshared);
 
 		phoneusername = (TextView) findViewById(R.id.phoneusername);
 
@@ -74,7 +76,7 @@ public class GosSettiingsActivity extends GosBaseActivity implements OnClickList
 	}
 
 	private void initEvent() {
-		llAbout.setOnClickListener(this);
+//		llAbout.setOnClickListener(this);
 		usermanager.setOnClickListener(this);
 		lllogin.setOnClickListener(this);
 	}
@@ -82,17 +84,17 @@ public class GosSettiingsActivity extends GosBaseActivity implements OnClickList
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
-		case R.id.llAbout:
-			intent = new Intent(GosSettiingsActivity.this, GosAboutActivity.class);
-			startActivity(intent);
-			llAbout.setEnabled(false);
-			llAbout.postDelayed(new Runnable() {
-				@Override
-				public void run() {
-					llAbout.setEnabled(true);
-				}
-			}, 1000);
-			break;
+//		case R.id.llAbout:
+//			intent = new Intent(GosSettiingsActivity.this, GosAboutActivity.class);
+//			startActivity(intent);
+//			llAbout.setEnabled(false);
+//			llAbout.postDelayed(new Runnable() {
+//				@Override
+//				public void run() {
+//					llAbout.setEnabled(true);
+//				}
+//			}, 1000);
+//			break;
 
 		case R.id.usermanager:
 			intent = new Intent(GosSettiingsActivity.this, GosUserManager.class);
@@ -137,20 +139,20 @@ public class GosSettiingsActivity extends GosBaseActivity implements OnClickList
 		}
 	}
 
-	// 设备共享
-	public void deviceshared(View v) {
-
-		Intent deviceshared1 = new Intent(this, SharedDeviceListAcitivity.class);
-
-		startActivity(deviceshared1);
-
-		deviceshared.setEnabled(false);
-		deviceshared.postDelayed(new Runnable() {
-			@Override
-			public void run() {
-				deviceshared.setEnabled(true);
-			}
-		}, 1000);
-
-	}
+//	// 设备共享
+//	public void deviceshared(View v) {
+//
+//		Intent deviceshared1 = new Intent(this, SharedDeviceListAcitivity.class);
+//
+//		startActivity(deviceshared1);
+//
+//		deviceshared.setEnabled(false);
+//		deviceshared.postDelayed(new Runnable() {
+//			@Override
+//			public void run() {
+//				deviceshared.setEnabled(true);
+//			}
+//		}, 1000);
+//
+//	}
 }

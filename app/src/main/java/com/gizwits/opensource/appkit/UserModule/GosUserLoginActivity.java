@@ -20,6 +20,7 @@ import com.gizwits.opensource.appkit.DeviceModule.GosDeviceListActivity;
 import com.gizwits.opensource.appkit.DeviceModule.GosMainActivity;
 import com.gizwits.opensource.appkit.PushModule.GosPushManager;
 import com.gizwits.opensource.appkit.ThirdAccountModule.BaseUiListener;
+import com.gizwits.opensource.appkit.utils.ActivityManager;
 import com.gizwits.opensource.appkit.view.DotView;
 import com.tencent.mm.sdk.modelmsg.SendAuth;
 import com.tencent.mm.sdk.openapi.IWXAPI;
@@ -178,6 +179,8 @@ public class GosUserLoginActivity extends GosUserModuleBaseActivity implements O
 		setActionBar(false, false, R.string.app_company);
 		initView();
 		initEvent();
+
+		ActivityManager.addActivity(this);
 	}
 
 
