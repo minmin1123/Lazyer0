@@ -35,7 +35,7 @@
 					android:layout_width="wrap_content"
 					android:layout_height="match_parent"
 					android:layout_centerVertical="true"
-					android:text="灯1"
+					android:text="灯"
 					android:layout_toRightOf="@id/lightOne"
 					android:layout_marginLeft="45dp"
 					android:textSize="20sp"/>
@@ -68,19 +68,19 @@
 				android:padding="10dp" >
 
 			 <ImageView
-				 android:id="@+id/lightTwo"
+				 android:id="@+id/lock"
 				 android:layout_marginLeft="10dp"
 				 android:layout_width="wrap_content"
 				 android:layout_height="wrap_content"
-				 android:background="@drawable/lightoff"
+				 android:background="@drawable/lock_off"
 				 />
 
 			 <TextView
 				 android:layout_width="wrap_content"
 				 android:layout_height="match_parent"
 				 android:layout_centerVertical="true"
-				 android:text="灯2"
-				 android:layout_toRightOf="@id/lightTwo"
+				 android:text="锁"
+				 android:layout_toRightOf="@id/lock"
 				 android:layout_marginLeft="45dp"
 				 android:textSize="20sp"/>
 

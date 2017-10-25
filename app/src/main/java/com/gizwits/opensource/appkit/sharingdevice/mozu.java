@@ -34,7 +34,7 @@ public class mozu extends GosBaseActivity{
 		 web.loadUrl(GosConstant.mozu);
 		 
 		 
-		// web.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);//设置js可以直接打开窗口，如window.open()，默认为false
+		// web.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);//设置js可以直接打开窗口，如window.lock_on()，默认为false
 		 web.getSettings().setJavaScriptEnabled(true);//是否允许执行js，默认为false。设置true时，会提醒可能造成XSS漏洞
 		 web.getSettings().setSupportZoom(true);//是否可以缩放，默认true
 		 web.getSettings().setBuiltInZoomControls(true);//是否显示缩放按钮，默认false

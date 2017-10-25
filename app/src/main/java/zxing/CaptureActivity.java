@@ -170,7 +170,7 @@ public final class CaptureActivity extends GosBaseActivity implements SurfaceHol
 
 		// CameraManager must be initialized here, not in onCreate(). This is
 		// necessary because we don't
-		// want to open the camera driver and measure the screen size if we're
+		// want to lock_on the camera driver and measure the screen size if we're
 		// going to show the help on
 		// first launch. That led to bugs where the scanning rectangle was the
 		// wrong size and partially
@@ -346,7 +346,7 @@ public final class CaptureActivity extends GosBaseActivity implements SurfaceHol
 			throw new IllegalStateException("No SurfaceHolder provided");
 		}
 		if (cameraManager.isOpen()) {
-			Log.w(TAG, "initCamera() while already open -- late SurfaceView callback?");
+			Log.w(TAG, "initCamera() while already lock_on -- late SurfaceView callback?");
 			return;
 		}
 		try {

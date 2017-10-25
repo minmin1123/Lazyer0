@@ -43,7 +43,7 @@ public class GosDeviceControlActivity extends GosControlModuleBaseActivity
 	private Switch sw_bool_lock;
 
 	private ImageView lightOne;
-	private ImageView lightTwo;
+	private ImageView lock;
 
 	private enum handler_key {
 
@@ -95,7 +95,7 @@ public class GosDeviceControlActivity extends GosControlModuleBaseActivity
 		sw_bool_led = (Switch) findViewById(R.id.sw_bool_led);
 		sw_bool_lock = (Switch) findViewById(R.id.sw_bool_lock);
 		lightOne = (ImageView) findViewById(R.id.lightOne);
-		lightTwo = (ImageView) findViewById(R.id.lightTwo);
+		lock = (ImageView) findViewById(R.id.lock);
 	}
 
 	private void initEvent() {
@@ -148,9 +148,9 @@ public class GosDeviceControlActivity extends GosControlModuleBaseActivity
 		case R.id.sw_bool_lock:
 			sendCommand(KEY_LOCK, sw_bool_lock.isChecked());
 			if(sw_bool_lock.isChecked()){
-				lightTwo.setBackgroundResource(R.drawable.lighton);
+				lock.setBackgroundResource(R.drawable.lock_on);
 			}else{
-				lightTwo.setBackgroundResource(R.drawable.lightoff);
+				lock.setBackgroundResource(R.drawable.lock_off);
 			}
 			break;
 		default:

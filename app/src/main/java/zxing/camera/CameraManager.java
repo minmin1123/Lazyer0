@@ -67,7 +67,7 @@ public class CameraManager {
 	 *            The surface object which the camera will draw preview frames
 	 *            into.
 	 * @throws IOException
-	 *             Indicates the camera driver failed to open.
+	 *             Indicates the camera driver failed to lock_on.
 	 */
 	public synchronized void openDriver(SurfaceHolder holder) throws IOException {
 		Camera theCamera = camera;
@@ -128,7 +128,7 @@ public class CameraManager {
 		if (camera != null) {
 			camera.release();
 			camera = null;
-			// Make sure to clear these each time we close the camera, so that
+			// Make sure to clear these each time we lock_off the camera, so that
 			// any scanning rect
 			// requested by intent is forgotten.
 		}
